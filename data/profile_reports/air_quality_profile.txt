@@ -1,0 +1,86 @@
+ DATA PROFILE: Air Quality (EPA)
+Rows: 1021
+Columns: 18
+
+Column Types:
+State                                  object
+County                                 object
+Year                                    int64
+Days with AQI                           int64
+Good Days                               int64
+Moderate Days                           int64
+Unhealthy for Sensitive Groups Days     int64
+Unhealthy Days                          int64
+Very Unhealthy Days                     int64
+Hazardous Days                          int64
+Max AQI                                 int64
+90th Percentile AQI                     int64
+Median AQI                              int64
+Days CO                                 int64
+Days NO2                                int64
+Days Ozone                              int64
+Days PM2.5                              int64
+Days PM10                               int64
+
+
+Missing Values per Column:
+State                                  0
+County                                 0
+Year                                   0
+Days with AQI                          0
+Good Days                              0
+Moderate Days                          0
+Unhealthy for Sensitive Groups Days    0
+Unhealthy Days                         0
+Very Unhealthy Days                    0
+Hazardous Days                         0
+Max AQI                                0
+90th Percentile AQI                    0
+Median AQI                             0
+Days CO                                0
+Days NO2                               0
+Days Ozone                             0
+Days PM2.5                             0
+Days PM10                              0
+
+
+Duplicate Rows: 0
+
+Unique Counts per Column:
+State                                   54
+County                                 793
+Year                                     1
+Days with AQI                          161
+Good Days                              279
+Moderate Days                          236
+Unhealthy for Sensitive Groups Days     43
+Unhealthy Days                          24
+Very Unhealthy Days                     10
+Hazardous Days                           5
+Max AQI                                196
+90th Percentile AQI                     90
+Median AQI                              68
+Days CO                                 11
+Days NO2                                43
+Days Ozone                             282
+Days PM2.5                             297
+Days PM10                               84
+
+
+County-like columns: ['County']
+State-like columns: ['State']
+
+Formatting fixes needed in County: 1021 rows
+Formatting fixes needed in State: 1021 rows
+
+
+Numeric Column Summary:
+         Year  Days with AQI    Good Days  Moderate Days  Unhealthy for Sensitive Groups Days  Unhealthy Days  Very Unhealthy Days  Hazardous Days      Max AQI  90th Percentile AQI   Median AQI      Days CO     Days NO2   Days Ozone   Days PM2.5    Days PM10
+count  1021.0    1021.000000  1021.000000    1021.000000                          1021.000000     1021.000000          1021.000000     1021.000000  1021.000000          1021.000000  1021.000000  1021.000000  1021.000000  1021.000000  1021.000000  1021.000000
+mean   2018.0     320.804114   226.615083      89.092067                             4.000000        0.926543             0.141038        0.029383   125.080313            61.449559    39.936337     0.445642     2.965720   158.308521   148.958864    10.125367
+std       0.0      77.912802    74.224023      63.626479                             9.154127        3.325701             0.806645        0.338854    69.313846            15.221652    10.211338     7.103730    15.631786   118.458514   121.674156    45.601191
+min    2018.0       2.000000     2.000000       0.000000                             0.000000        0.000000             0.000000        0.000000    11.000000            10.000000     3.000000     0.000000     0.000000     0.000000     0.000000     0.000000
+25%    2018.0     319.000000   190.000000      34.000000                             0.000000        0.000000             0.000000        0.000000    93.000000            54.000000    35.000000     0.000000     0.000000    58.000000     6.000000     0.000000
+50%    2018.0     361.000000   230.000000      77.000000                             1.000000        0.000000             0.000000        0.000000   112.000000            60.000000    40.000000     0.000000     0.000000   155.000000   143.000000     0.000000
+75%    2018.0     365.000000   283.000000     132.000000                             5.000000        0.000000             0.000000        0.000000   143.000000            67.000000    46.000000     0.000000     0.000000   244.000000   248.000000     0.000000
+max    2018.0     365.000000   361.000000     302.000000                           103.000000       51.000000            15.000000        8.000000  1051.000000           164.000000    89.000000   175.000000   251.000000   365.000000   365.000000   365.000000
