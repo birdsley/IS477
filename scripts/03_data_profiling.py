@@ -1,0 +1,120 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Profiling complete. Reports saved to data/profile_reports/\n"
+     ]
+    }
+   ],
+   "source": [
+    "#data quality profiling\n",
+    "import os\n",
+    "import pandas as pd\n",
+    "\n",
+    "raw_path = \"data/raw\"\n",
+    "report_path = \"data/profile_reports\"\n",
+    "\n",
+    "os.makedirs(report_path, exist_ok=True)\n",
+    "\n",
+    "def profile_dataset(df, name):\n",
+    "    \"\"\"Generate profiling statistics for a dataset.\"\"\"\n",
+    "    report = []\n",
+    "\n",
+    "    report.append(f\" DATA PROFILE: {name}\")\n",
+    "#shape\n",
+    "    report.append(f\"Rows: {df.shape[0]}\")\n",
+    "    report.append(f\"Columns: {df.shape[1]}\\n\")\n",
+    "\n",
+    "#data type\n",
+    "    report.append(\"Column Types:\")\n",
+    "    report.append(df.dtypes.to_string())\n",
+    "    report.append(\"\\n\")\n",
+    "\n",
+    "#completeness\n",
+    "    report.append(\"Missing Values per Column:\")\n",
+    "    report.append(df.isna().sum().to_string())\n",
+    "    report.append(\"\\n\")\n",
+    "\n",
+    "#duplicates\n",
+    "    dup_count = df.duplicated().sum()\n",
+    "    report.append(f\"Duplicate Rows: {dup_count}\\n\")\n",
+    "\n",
+    "#uniqueness\n",
+    "    report.append(\"Unique Counts per Column:\")\n",
+    "    report.append(df.nunique().to_string())\n",
+    "    report.append(\"\\n\")\n",
+    "\n",
+    "#state and counties\n",
+    "    possible_county_cols = [c for c in df.columns if \"county\" in c.lower()]\n",
+    "    possible_state_cols = [c for c in df.columns if \"state\" in c.lower()]\n",
+    "\n",
+    "    report.append(f\"County-like columns: {possible_county_cols}\")\n",
+    "    report.append(f\"State-like columns: {possible_state_cols}\\n\")\n",
+    "\n",
+    "#check casing/whitespace issues in key fields\n",
+    "    for col in possible_county_cols + possible_state_cols:\n",
+    "        if col in df.columns:\n",
+    "            cleaned = df[col].astype(str).str.lower().str.strip()\n",
+    "            mismatch = (cleaned != df[col].astype(str)).sum()\n",
+    "            report.append(f\"Formatting fixes needed in {col}: {mismatch} rows\")\n",
+    "\n",
+    "    report.append(\"\\n\")\n",
+    "\n",
+    "#numeric value description\n",
+    "    numeric_cols = df.select_dtypes(include=\"number\").columns\n",
+    "    if len(numeric_cols) > 0:\n",
+    "        report.append(\"Numeric Column Summary:\")\n",
+    "        report.append(df[numeric_cols].describe().to_string())\n",
+    "        report.append(\"\\n\")\n",
+    "\n",
+    "    return \"\\n\".join(report)\n",
+    "\n",
+    "\n",
+    "if __name__ == \"__main__\":\n",
+    "    aq_path = os.path.join(raw_path, \"annual_aqi_by_county_2018.csv\")\n",
+    "    asthma_path = os.path.join(raw_path, \"asthma_by_county.csv\")\n",
+    "    df_aq = pd.read_csv(aq_path)\n",
+    "    df_asthma = pd.read_csv(asthma_path)\n",
+    "    aq_report = profile_dataset(df_aq, \"Air Quality (EPA)\")\n",
+    "    asthma_report = profile_dataset(df_asthma, \"Asthma (CDC)\")\n",
+    "\n",
+    "    with open(os.path.join(report_path, \"air_quality_profile.txt\"), \"w\") as f:\n",
+    "        f.write(aq_report)\n",
+    "\n",
+    "    with open(os.path.join(report_path, \"asthma_profile.txt\"), \"w\") as f:\n",
+    "        f.write(asthma_report)\n",
+    "\n",
+    "    print(\"Profiling complete. Reports saved to data/profile_reports/\")"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.5"
+  },
+  "orig_nbformat": 4
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
