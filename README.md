@@ -1,10 +1,13 @@
 This repository explores the links between asthma and poor air quality over time. Our data workflow allows us to acquire, process, save, and document all data necessary to reproduce the results.
 
+**Reproducibility**
+
+To achieve the results we have obtained, all you have to do is go to the 'Actions' tab of our repository, and then run the 'workflow.py' script that is on the top level of the main branch. This will run all of our python scripts in the correct manner. From here, you can view results in the respective folder.
 
 **Data Acquisition Documentation**
 
 1. Air Quality Data
-We obtained annual county-level air quality data from the EPA’s Air Quality System (AQS). This dataset contains detailed measurements from monitoring sites in specific counties (note: not all U.S. counties are included).
+We obtained annual county-level air quality data from the EPA’s Air Quality System (AQS). This dataset contains detailed measurements from monitoring sites in specific counties (note: not all U.S. counties are included). The year of the data that we chose was 2018. This is due to the fact that the asthma data was from 2020, and we wanted to ensure a gap in the data to measure cause and effect. We chose a two year gap is this was cited by researchers as an appropriate time window.
 
 Schema:
 
@@ -79,3 +82,16 @@ Air Quality Data: https://aqs.epa.gov/aqsweb/airdata/download_files.html
 This script inspects the integrity of the data we download by generating SHA-256 checksums for the raw data retrieved in the acquisition phase. This allows for other uses to check integrity and ensure that the original files have not been altered.
 
 The compute function finds the raw data according to a specified file path. After this is done, the function returns a SHA256 hexadecimal string and saves this as a JSON. The JSON’s are saved in a ‘checksums’ folder located within the data branch. As long as the correct file paths are specified to find the raw data, this script will run and save to the correct location.
+
+**Data Profiling** 
+
+**Data Cleaning** 
+
+**Database Connection**
+
+**Data Integration**
+
+**Analysis**
+
+**Work Cited**
+American Lung Association. (2025, May 9). Understanding the strong link between air pollution and asthma. American Lung Association. https://www.lung.org/blog/asthma-and-air-pollution
