@@ -6,6 +6,8 @@ To achieve the results we have obtained, all you have to do is go to the 'Action
 
 If you choose to run the results in your own envionrment based on the scripts we have provided, you will need the following libraries: Subprocess, os, sys, pandas, requests, numpy, seaborn, zipfile, io, StringIO, hashlib, json, re, sqlite3, and matplotlib.
 
+Additionally, our raw, processed, and joined data can also be viewed here along with the final results: https://uofi.app.box.com/folder/354716358671. All course staff should have access, but if this is an issue please reach out to samuel36@illinois.edu or mstrobl3@illinois.edu.
+
 
 **Data Acquisition Documentation**
 
