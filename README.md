@@ -1,7 +1,7 @@
 **Final Project: Air Quality and its Effects on Asthma**
 --
 Contributors:
-  Sam Birdsley
+  Sam Birdsley & 
   Michael Strobl
 --
 
