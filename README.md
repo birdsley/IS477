@@ -11,7 +11,7 @@ Additionally, our raw, processed, and joined data can also be viewed here along 
 
 **Data Acquisition Documentation**
 
-1. Air Quality Data
+1. Air Quality Data - EPA Air Quality System (2018)
 We obtained annual county-level air quality data from the EPA’s Air Quality System (AQS). This dataset contains detailed measurements from monitoring sites in specific counties (note: not all U.S. counties are included). The year of the data that we chose was 2018. This is due to the fact that the asthma data was from 2020, and we wanted to ensure a gap in the data to measure cause and effect. We chose a two year gap is this was cited by researchers as an appropriate time window.
 
 Schema:
@@ -56,7 +56,7 @@ Schema:
 
 
 
-2. Asthma Data
+2. Asthma Data - CDC PLACES (2020)
 Asthma data was acquired from the CDC (Center for Disease Control). For our analysis, we focused on columns starting with CASTHMA_, which indicate the frequency of asthma in U.S. counties. We queried data for 2020, based on research suggesting that the negative effects of poor air quality on asthma prevalence may take 12–24 months to come into effect.
 
 Schema:
@@ -90,13 +90,23 @@ The compute function finds the raw data according to a specified file path. Afte
 
 **Data Profiling** 
 
+Assess data quality of raw data that we acquired in the previous steps. 
+
 **Data Cleaning** 
+
+Adjust data to fix errors detected in the profiling stage.
 
 **Database Connection**
 
+Stored processed data in SQLite for reproducibility.
+
 **Data Integration**
 
+Merged asthma and air qaulity data at the county level. Prepared merged dataset for analysis.
+
 **Analysis**
+
+Generate descriptive statistics, visualizations, and correlations.
 
 **Work Cited**
 American Lung Association. (2025, May 9). Understanding the strong link between air pollution and asthma. American Lung Association. https://www.lung.org/blog/asthma-and-air-pollution
