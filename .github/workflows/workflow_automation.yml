@@ -40,11 +40,3 @@ jobs:
           data/processed/
           data/db/
           data/checksums.json
-    - name: Commit and push outputs
-      run: |
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add results/ data/raw/ data/processed/ data/db/ data/checksums.json
-        git commit -m "Add pipeline outputs from workflow run"
-        git push
-
