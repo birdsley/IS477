@@ -30,43 +30,27 @@ We obtained annual county-level air quality data from the EPA’s Air Quality Sy
 
 Schema:
 
-| Field Position | Field Name                   | Description                                                                       |
-| -------------- | ---------------------------- | --------------------------------------------------------------------------------- |
-| 1              | State Code                   | FIPS code of the state where the monitor resides                                  |
-| 2              | County Code                  | FIPS code of the county where the monitor resides                                 |
-| 3              | Site Num                     | Unique number within the county identifying the monitoring site                   |
-| 4              | Parameter Code               | AQS code for the parameter measured by the monitor                                |
-| 5              | POC                          | Parameter Occurrence Code distinguishing instruments measuring the same parameter |
-| 6              | Latitude                     | Latitude of the monitoring site in decimal degrees                                |
-| 7              | Longitude                    | Longitude of the monitoring site in decimal degrees                               |
-| 8              | Datum                        | Datum associated with Latitude and Longitude measures                             |
-| 9              | Parameter Name               | Name/description of the measured parameter (pollutant or non-pollutant)           |
-| 10             | Sample Duration              | Length of time air passes through the monitor before analysis                     |
-| 11             | Pollutant Standard           | Description of the ambient air quality standard rules                             |
-| 12             | Metric Used                  | Base metric used in aggregate statistics (e.g., Daily Maximum)                    |
-| 13             | Method Name                  | Description of processes, equipment, and protocols used                           |
-| 14             | Year                         | Year the annual summary represents                                                |
-| 15             | Units of Measure             | Standard unit of the measured parameter                                           |
-| 16             | Event Type                   | Indicates whether exceptional events (e.g., wildfires) are included or excluded   |
-| 17             | Observation Count            | Number of observations taken during the year                                      |
-| 18             | Observation Percent          | Percent of scheduled observations taken                                           |
-| 19             | Completeness Indicator       | Whether regulatory completeness criteria were met (Y/N)                           |
-| 20             | Valid Day Count              | Number of days with valid monitoring criteria                                     |
-| 21             | Required Day Count           | Scheduled number of sampling days                                                 |
-| 22             | Exceptional Data Count       | Data points affected by exceptional air quality events                            |
-| 23             | Null Data Count              | Scheduled samples when no data was collected                                      |
-| 24             | Primary Exceedance Count     | Number of samples exceeding primary air quality standard                          |
-| 25             | Secondary Exceedance Count   | Number of samples exceeding secondary air quality standard                        |
-| 26             | Certification Indicator      | Certification status of the annual summary data                                   |
-| 27             | Num Obs Below MDL            | Number of samples below method detection limit (MDL)                              |
-| 28–48          | Various statistical measures | Annual mean, max values, percentiles, standard deviations                         |
-| 49             | Local Site Name              | Name of the site given by state/local/tribal agency                               |
-| 50             | Address                      | Approximate street address of monitoring site                                     |
-| 51             | State Name                   | Name of the state                                                                 |
-| 52             | County Name                  | Name of the county                                                                |
-| 53             | City Name                    | Legal city boundaries of the monitoring site                                      |
-| 54             | CBSA Name                    | Core Based Statistical Area (metropolitan area)                                   |
-| 55             | Date of Last Change          | Date of the last numeric update in AQS                                            |
+| Field Name                          | Description                                               | Type   |
+| ----------------------------------- | --------------------------------------------------------- | ------ |
+| State                               | Name of the state                                         | object |
+| County                              | Name of the county                                        | object |
+| Year                                | Reporting year                                            | int64  |
+| Days with AQI                       | Total number of days in the year with a valid AQI reading | int64  |
+| Good Days                           | Days with AQI 0–50 (Good)                                 | int64  |
+| Moderate Days                       | Days with AQI 51–100 (Moderate)                           | int64  |
+| Unhealthy for Sensitive Groups Days | Days with AQI 101–150 (USG)                               | int64  |
+| Unhealthy Days                      | Days with AQI 151–200 (Unhealthy)                         | int64  |
+| Very Unhealthy Days                 | Days with AQI 201–300 (Very Unhealthy)                    | int64  |
+| Hazardous Days                      | Days with AQI 301–500 (Hazardous)                         | int64  |
+| Max AQI                             | Highest AQI recorded during the year                      | int64  |
+| 90th Percentile AQI                 | AQI value at the 90th percentile                          | int64  |
+| Median AQI                          | Median AQI for the year                                   | int64  |
+| Days CO                             | Number of days where CO was the primary pollutant         | int64  |
+| Days NO2                            | Number of days where NO₂ was the primary pollutant        | int64  |
+| Days Ozone                          | Number of days where Ozone was the primary pollutant      | int64  |
+| Days PM2.5                          | Number of days where PM2.5 was the primary pollutant      | int64  |
+| Days PM10                           | Number of days where PM10 was the primary pollutant       | int64  |
+
 
 
 
@@ -75,24 +59,26 @@ Asthma data was acquired from the CDC (Center for Disease Control). For our anal
 
 Schema:
 
-| Column Name       | Description                                                                      | Standardized Name | Type   |
+| Field Name        | Description                                                                      | Standardized Name | Type   |
 | ----------------- | -------------------------------------------------------------------------------- | ----------------- | ------ |
-| StateAbbr         | State abbreviation                                                               | stateabbr         | Text   |
-| StateDesc         | State name                                                                       | statedesc         | Text   |
-| CountyName        | County name                                                                      | countyname        | Text   |
-| CountyFIPS        | County FIPS code                                                                 | countyfips        | Text   |
-| TotalPopulation   | 2018 population estimate                                                         | totalpopulation   | Number |
-| CASTHMA_CrudePrev | Model-based estimate of crude prevalence of current asthma among adults aged ≥18 | casthma_crudeprev | Number |
-| CASTHMA_Crude95CI | Estimated confidence interval for crude prevalence                               | casthma_crude95ci | Text   |
-| CASTHMA_AdjPrev   | Model-based estimate of age-adjusted prevalence of asthma                        | casthma_adjprev   | Number |
-| CASTHMA_Adj95CI   | Estimated confidence interval for age-adjusted prevalence                        | casthma_adj95ci   | Text   |
+| StateAbbr         | State abbreviation                                                               | stateabbr         | object |
+| StateDesc         | State name                                                                       | statedesc         | object |
+| CountyName        | County name                                                                      | countyname        | object |
+| CountyFIPS        | County FIPS code                                                                 | countyfips        | objec  |
+| TotalPopulation   | 2018 population estimate                                                         | totalpopulation   | int64  |
+| CASTHMA_CrudePrev | Model-based estimate of crude prevalence of current asthma among adults aged ≥18 | casthma_crudeprev | float64|
+| CASTHMA_Crude95CI | Estimated confidence interval for crude prevalence                               | casthma_crude95ci | object |
+| CASTHMA_AdjPrev   | Model-based estimate of age-adjusted prevalence of asthma                        | casthma_adjprev   | float64|
+| CASTHMA_Adj95CI   | Estimated confidence interval for age-adjusted prevalence                        | casthma_adj95ci   | object |
 
 
 
 
 
-The data can be accessed and assessed using the following URL’s
+The data can be accessed and assessed using the following URL’s:
+
 Asthma data: https://data.cdc.gov/500-Cities-Places/PLACES-County-Data-GIS-Friendly-Format-2020-releas/mssc-ksj7/about_data
+
 Air Quality Data: https://aqs.epa.gov/aqsweb/airdata/download_files.html
 
 
