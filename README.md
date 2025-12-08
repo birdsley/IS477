@@ -1,3 +1,10 @@
+**Final Project: Air quality and its effects on asthma**
+--
+Contributors:
+  Sam Birdsley
+  Michael Strobl
+--
+
 This repository explores the links between asthma and poor air quality over time. Our data workflow allows us to acquire, process, save, and document all data necessary to reproduce the results.
 
 **Reproducibility**
@@ -8,6 +15,13 @@ If you choose to run the results in your own envionrment based on the scripts we
 
 Additionally, our raw, processed, and joined data can also be viewed here along with the final results: https://uofi.app.box.com/folder/354716358671. All course staff should have access, but if this is an issue please reach out to samuel36@illinois.edu or mstrobl3@illinois.edu.
 
+**Summary**
+
+The goal of our project was to investigate the statistical correlation between poor air quality and asthma rates in the same counties. Within our automated workflow, we have multiple Python scripts that retrieve the data, ensure its integrity, profile it, clean it, integrate it, store it, and analyze it. We retrieved open-source data from two different United States government agencies. We determined that the best course of action was to offset the asthma data by 2 years so that we can measure the direct effects of the air quality data as well. The data was retrieved directly via a request command, and the links to the data are included in the code and in this documentation. It is important to note that both datasets contained different counties, so we were unable to use either dataset in its entirety. Certain states were included in one dataset but not the other, resulting in a relatively low number of matches compared to either full dataset. We decided to look into this topic because we both know people with asthma and were interested in the statistical correlation between the two factors. We want to understand the mechanisms that lead to health disparities and how specific groups are affected by them.
+
+Furthermore, when it was time to do the analysis, something we realized was that most counties have excellent air quality. Poor air quality is often found in large cities and occurs only a few days out of the year. A good example of this is Chicago, which had a few days of poor air quality due to wildfires last summer, but is usually positive overall. This made the analysis difficult because many of these cities attract affluent people who move there later in life, after they have passed the developmental stage when most people get asthma. Furthermore, in rural counties that have high levels of asthma, there are other factors affecting these people. As we will mention later, a good next step could be adding a third data source that has income level as well. This way, we can explore another factor that may help explain our asthma levels.
+
+The final output of this project is an artifact that can be downloaded from the automated workflow that the user can trigger. Once the workflow has run all the scripts, the results and different stages of data can be viewed. We considered pushing the results back to the repository, but this was deemed a bad practice when the workflow involves the user retrieving raw data.
 
 **Data Acquisition Documentation**
 
@@ -109,4 +123,6 @@ Merged asthma and air qaulity data at the county level. Prepared merged dataset 
 Generate descriptive statistics, visualizations, and correlations.
 
 **Work Cited**
+
+GitHub Documentation. (2024). About workflow artifacts. GitHub Docs. https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts
 American Lung Association. (2025, May 9). Understanding the strong link between air pollution and asthma. American Lung Association. https://www.lung.org/blog/asthma-and-air-pollution
