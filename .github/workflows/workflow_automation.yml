@@ -30,3 +30,14 @@ jobs:
       run: |
         set -e
         python workflow.py
+
+    - name: Upload all outputs as artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: full-pipeline-outputs
+        path: |
+          results/analysis/
+          data/raw/
+          data/processed/
+          data/db/
+          data/checksums.json
