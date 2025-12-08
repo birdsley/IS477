@@ -2,7 +2,7 @@ This repository explores the links between asthma and poor air quality over time
 
 **Reproducibility**
 
-To achieve the results we have obtained, all you have to do is go to the 'Actions' tab of our repository, and then run the master workflow. This can be done manually and will trigger our workflow automation python script. This will run all of our python scripts in the correct manner. From here, you can view results in the respective folder.
+To achieve the results we have obtained, all you have to do is go to the 'Actions' tab of our repository, and then run the master workflow. This can be done manually and will trigger our workflow automation python script. This will run all of our python scripts in the correct manner. From here, you must download the artificat from the workflow where you can view the results, as well as all the version of our data. We chose to do this as it was considered best practice for a GitHub workflow. If there are any questions on how to achieve these results, please reach out.
 
 If you choose to run the results in your own envionrment based on the scripts we have provided, you will need the following libraries: Subprocess, os, sys, pandas, requests, numpy, seaborn, zipfile, io, StringIO, hashlib, json, re, sqlite3, and matplotlib.
 
