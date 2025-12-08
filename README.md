@@ -1,4 +1,4 @@
-**Final Project: Air quality and its effects on asthma**
+**Final Project: Air Quality and its Effects on Asthma**
 --
 Contributors:
   Sam Birdsley
