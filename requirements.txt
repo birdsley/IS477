@@ -1,0 +1,3 @@
+Requirements to run this in your own environment:
+- Coding environment with Python installed.
+- The following Python libraries: Subprocess,os,sys,pandas,requests,numpy,seaborn,zipfile,io,StringIO,hashlib,json,re,sqlite3,matplotlib
