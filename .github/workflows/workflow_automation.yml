@@ -1,16 +1,10 @@
 name: Run master pipeline
 
-
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -34,5 +28,5 @@ jobs:
 
     - name: Run master workflow
       run: |
-        set -e  # <-- stops immediately if any subscript fails
+        set -e
         python workflow.py
